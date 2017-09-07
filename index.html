@@ -1,0 +1,49 @@
+<html>
+<head>
+	<script type="text/javascript" src="rc4.js"></script>
+	<script type="text/javascript" src="base64.js"></script>
+	<script type="text/javascript" src="md5.js"></script>
+</head>
+<body>
+	<script language="JavaScript">
+		function rc4encrypt() {
+			document.rc4.text.value = base64.encode(rc4(document.rc4.text.value, document.rc4.key.value))
+		}
+		function rc4decrypt() {
+			document.rc4.text.value = (rc4(base64.decode(document.rc4.text.value, document.rc4.key.value)))
+		}
+    </script>
+
+    <h3>RC4 Encryption (input text for both field): /eSAoSV7ZbJ+BpXQ</h3>
+    <form method="POST" name="rc4">
+      <div align="center">
+        <table border="0">
+          <tr>
+            <td align="right">
+              Key:
+            </td>
+            <td>
+              <input type="text" size="60" name="key" value="">
+            </td>
+          </tr>
+          <tr>
+            <td align="right">
+              Text:
+            </td>
+            <td>
+              <textarea name="text" rows="6" cols="70"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p align="center">
+                <input type="button" name="B1" value="Encrypt" onclick="rc4encrypt()">
+                <input type="button" name="B2" value="Decrypt" onclick="rc4decrypt()">
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+</body>
+</html>
