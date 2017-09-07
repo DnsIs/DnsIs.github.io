@@ -27,7 +27,7 @@
 			req = d.getElementById("request");
 			xhr = getXmlHttp();
 			
-			xhr.open('post', URL, true);
+			xhr.open('get', URL, true);
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState != 4) return
 					clearTimeout(timeout)
@@ -35,7 +35,6 @@
 					pre.innerHTML = xhr.responseText;
 				} else {
 					pre.innerHTML = "Error loading";
-					info.innerHTML = "";
 				}
 			}
 			pre.innerHTML = "Loading";
