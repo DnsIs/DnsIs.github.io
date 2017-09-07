@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Test xhr</title>
+	<script>
+		d = document;
+		function getXmlHttp(){
+			var xmlhttp;
+			try {
+			  xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+			  try {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			  } catch (E) {
+				xmlhttp = false;
+			  }
+			}
+			if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+			  xmlhttp = new XMLHttpRequest();
+			}
+			return xmlhttp;
+		}
+			
+		function loadLog (URL) {
+			pre = d.getElementById("data");
+			req = d.getElementById("request");
+			xhr = getXmlHttp();
+			
+			xhr.open('post', URL, true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState != 4) return
+					clearTimeout(timeout)
+				if (xhr.status == 200) {
+					pre.innerHTML = xhr.responseText;
+				} else {
+					pre.innerHTML = "Error loading";
+					info.innerHTML = "";
+				}
+			}
+			pre.innerHTML = "Loading";
+			xhr.send(null);
+			var timeout = setTimeout( function() { xhr.abort() }, 10000);
+		}
+    </script>
+	<style>
+		body {
+			margin: 30px 30px auto;
+		}
+		a {
+			color: #2D2D2D;
+			text-decoration: none;
+		}
+		.wrap {
+			white-space: pre-wrap;
+			white-space: -moz-pre-wrap;
+			white-space: -pre-wrap;
+			white-space: -o-pre-wrap;
+			word-wrap: break-word;
+			overflow: auto;
+			font-size: 11px;
+			color: #eee;
+			background: #300a24;
+			border: 1px solid #222;
+		}
+		
+		#data {
+			position: absolute;
+			top: 50px;
+			left: 20px;
+			width: 500px;
+		}
+		
+		#request{
+			position: absolute;
+			top: 50px;
+			left: 540px;
+			width: 500px;
+		}
+    </style>
+</head>
+<body>
+	<a href="#" onclick = "loadLog('https://www.dropbox.com/s/z7qbf7rgfywbg6c/text.txt?dl=0')">PUSH ME</a>
+	<div><pre class = "wrap" id = "data"></pre></div>
+	<div><pre class = "wrap" id = "request"></pre></div>
+</body>
+</html>
