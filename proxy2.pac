@@ -15,8 +15,7 @@ function FindProxyForURL(url, host) {
 		"tparser.org",
 		"torproject.org",
 		"tor.eff.org",
-		"instagram.*",
-		"cdninstagram.*",
+		"*instagram*",
 		"xhamster.*",
 		"xhamster4.*"
 	];
