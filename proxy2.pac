@@ -1,30 +1,27 @@
 function FindProxyForURL(url, host) {
-	var tor = "SOCKS 127.0.0.1:9050";
 	host = host.toLowerCase();
-
+	var tor = "SOCKS 127.0.0.1:9050";
     var proxylist = [
-		"rutracker.org",
-		"nnmclub.to",
-		"kinozal.tv",
-		"lostfilm.tv",
-		"thepiratebay.*",
-		"pornolab.net",
-		"filecat.net",
-		"booktracker.org",
-		"big-library.info",
-		"tparser.org",
-		"torproject.org",
-		"tor.eff.org",
+		"*rutracker.org",
+		"*nnmclub.to",
 		"*instagram*",
-		"xhamster.*",
-		"xhamster4.*"
+		"*torproject.org",
+		"*tor.eff.org",
+		"*thepiratebay.cr",
+		"*booktracker.org",
+		"*kinogo-lordfilm.net",
+		"*filmix.ac",
+		"*kinozal.tv",
+		"*seasonvar.ru",
+		"*big-library.info",
+		"*pornolab.net",
+		"*xhamster*"
 	];
 
     if (dnsDomainIs(host, ".onion")) return tor;
 
     for (var i = 0; i < proxylist.length; i++) {				
-        var value = proxylist[i];
-	if (shExpMatch(host, value)) {
+		if ( shExpMatch( host, proxylist[i] ) ) {
             return tor;
         }
     }
