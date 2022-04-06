@@ -2,6 +2,8 @@ function FindProxyForURL(url, host) {
 	host = host.toLowerCase();
 	var tor = "SOCKS 127.0.0.1:9050";
     var proxylist = [
+	    	"*2ip.ru",
+	    	"*ident.me",
 		"*rutracker.org",
 		"*nnmclub.to",
 		"*instagram*",
