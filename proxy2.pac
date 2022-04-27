@@ -7,6 +7,7 @@ function FindProxyForURL(url, host) {
 		"*rutracker.org",
 		"*nnmclub.to",
 		"*instagram*",
+	    	"*twitter*",
 		"*torproject.org",
 		"*tor.eff.org",
 		"*thepiratebay.cr",
