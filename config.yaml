@@ -1,0 +1,63 @@
+log-level: error
+mode: rule
+mixed-port: 7890
+
+listeners:
+  - name: socks5-in-1
+    type: socks
+    port: 10808
+
+dns:
+  enable: true
+  listen: 0.0.0.0:6868
+  default-nameserver:
+    - 1.1.1.1
+    - 1.0.0.1
+  nameserver:
+    - 8.8.8.8
+    - 8.8.4.4
+
+proxies:
+  - name: VLESS
+    type: vless
+    server: 185.121.15.66
+    port: 443
+    udp: true
+    uuid: 7a0bf353-9bcd-4a72-9232-722414b87f79
+    tls: true
+    cipher: none
+    network: tcp
+    flow: xtls-rprx-vision
+    servername: vimeo.com
+    reality-opts: 
+      public-key: nUHQKrSwwg_aqOwLOv2qisYofO0TKXeCUMBqp7fbOzc
+      short-id: 21371a438e133a4d
+    client-fingerprint: firefox
+
+rules:
+  - DOMAIN-SUFFIX,ident.me,VLESS
+  # lostfilm
+  - DOMAIN-KEYWORD,lostfilm,VLESS
+  # rutracker
+  - DOMAIN-KEYWORD,rutracker,VLESS
+  # nnmclub
+  - DOMAIN-SUFFIX,nnmclub.to,VLESS
+  - DOMAIN-SUFFIX,nnmstatic.win,VLESS
+  # instagram
+  - DOMAIN-SUFFIX,instagram.com,VLESS
+  - DOMAIN-SUFFIX,cdninstagram.com,VLESS
+  # youtube
+  - DOMAIN-SUFFIX,ytimg.com,VLESS
+  - DOMAIN-SUFFIX,youtube.com,VLESS
+  - DOMAIN-SUFFIX,googleapis.com,VLESS
+  - DOMAIN-SUFFIX,gstatic.com,VLESS
+  - DOMAIN-SUFFIX,l.google.com,VLESS
+  - DOMAIN-SUFFIX,ggpht.com,VLESS
+  - DOMAIN-SUFFIX,googleusercontent.com,VLESS
+  - DOMAIN-SUFFIX,youtu.be,VLESS
+  - DOMAIN-SUFFIX,googlevideo.com,VLESS
+  - DOMAIN-SUFFIX,google.com,VLESS
+  - DOMAIN-SUFFIX,withgoogle.com,VLESS
+  - DOMAIN-SUFFIX,youtube-nocookie.com,VLESS
+  - DOMAIN-SUFFIX,play.google.com,VLESS
+  - MATCH,DIRECT
